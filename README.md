@@ -1,6 +1,12 @@
 # brigit-frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+Using Vue 3 with Vite, and PrimeVue UI library.
+
+Some notes (Went overtime slightly so here is what I could do with extra time): 
+- Could change CSS colouring to use UI library variables.
+- Redo in composition API. 
+- Add animations and better results screen.
+- Could populate form data in api store directly instead of in component.
 
 ## Recommended IDE Setup
 
