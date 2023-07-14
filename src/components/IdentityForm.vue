@@ -29,7 +29,6 @@ export default {
   },
   methods: {
     onUpload(event: any) {
-      console.log(event)
       const file = event.files[0]
       this.imageName = file.name
       const reader = new FileReader()
