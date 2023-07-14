@@ -7,25 +7,35 @@ export const useApiStore = defineStore('api', {
     response: {
       approved: null,
       message: null
-    }
+    },
+    error: false
   }),
   getters: {
     getSubmit(state) {
       return state.response
+    },
+    getError(state) {
+      return state.error
     }
   },
   actions: {
+    refreshError() {
+      this.error = false
+    },
     async submitResponse(form: FormInfo) {
       try {
+        //change to backend
         const res = await axios.post('http://localhost:9300/submit', form)
         this.$state.response = res.data
-        console.log('response', res)
+        this.$state.error = false
+
       } catch (error) {
         if (error instanceof AxiosError) {
-          console.log('ERROR ', error.response?.data)
+          console.log('AXIOS ERROR ', error)
         } else {
           console.log('ERROR', error)
         }
+        this.$state.error = true
       }
     }
   }

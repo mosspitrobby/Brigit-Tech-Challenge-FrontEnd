@@ -39,7 +39,6 @@ export default {
 
         if (base64String) {
           this.license = base64String
-          console.log(base64String)
         }
       }
 

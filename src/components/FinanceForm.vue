@@ -1,4 +1,5 @@
 <script lang="ts">
+import { useApiStore } from '@/stores/api'
 import { useStepStore } from '@/stores/step'
 import { useVuelidate } from '@vuelidate/core'
 import { required, maxLength, between } from '@vuelidate/validators'
@@ -8,7 +9,8 @@ export default {
   setup() {
     return {
       v$: useVuelidate(),
-      steps: useStepStore()
+      steps: useStepStore(),
+      api: useApiStore()
     }
   },
   data() {
@@ -57,6 +59,7 @@ export default {
     },
     goBack() {
       this.steps.decrement()
+      this.api.refreshError()
     }
   }
 }
@@ -177,6 +180,9 @@ export default {
           <ButtonComponent label="Next" icon="pi pi-angle-right" iconPos="right" type="Submit" />
           <ButtonComponent label="Back" severity="secondary" @click="goBack" />
         </div>
+        <small v-if="api.error" class="p-error" id="text-error">
+            <b>Network error, try again later.</b>
+        </small>
       </form>
     </PanelComponent>
   </div>

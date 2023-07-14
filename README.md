@@ -6,7 +6,8 @@ Some notes (Went overtime slightly so here is what I could do with extra time):
 - Could change CSS colouring to use UI library variables.
 - Redo in composition API. 
 - Add animations and better results screen.
-- Could populate form data in api store directly instead of in component.
+- Could populate form data in api store directly instead of in component.'
+- Handle error response from backend better.
 
 ## Recommended IDE Setup
 

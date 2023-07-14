@@ -69,7 +69,7 @@ export default {
         }
       },
       steps: useStepStore(),
-      api: useApiStore()
+      api: useApiStore(),
     }
   },
   components: {
@@ -80,14 +80,15 @@ export default {
   methods: {
     populateIdentity(form: IdentityInfo) {
       this.form.identity = form
-      console.log(this.form.identity)
       this.steps.increment()
     },
     async populateFinances(form: FinanceInfo) {
       this.form.finances = form
       //wait before incrementing
       await this.formSubmitted()
-      this.steps.increment()
+      if(!this.api.error) {
+        this.steps.increment()
+      }
     },
     async formSubmitted() {
       const fullForm: FormInfo = {
