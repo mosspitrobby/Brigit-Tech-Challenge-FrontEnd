@@ -25,7 +25,7 @@ export const useApiStore = defineStore('api', {
     async submitResponse(form: FormInfo) {
       try {
         //change to backend
-        const res = await axios.post('http://localhost:9300/submit', form)
+        const res = await axios.post('https://loan-calc.adaptable.app/submit', form)
         this.$state.response = res.data
         this.$state.error = false
 
